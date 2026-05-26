@@ -36,25 +36,26 @@ surge login
 > dig @8.8.8.8 ssc.tianw.xyz +short
 > ```
 
-### 2. 准备部署文件
-
-由于 Surge 对中文路径支持有问题，需将文件复制到简单路径下：
+### 2. 构建项目
 
 ```bash
-rm -rf /tmp/ssc
-cp -r "/Users/tianyong/Documents/works/workspace/hp/汪总/设计信息化可视化页面/project-dashboard" /tmp/ssc
+cd "/Users/tianyong/Documents/works/workspace/hp/gaorun/SocialSecurityCard/Employment Services Integration App"
+npm run build
 ```
 
-### 3. 创建 CNAME 文件
+### 3. 复制 CNAME 文件
+
+项目根目录已存在 CNAME 文件，复制到构建输出目录：
 
 ```bash
-echo "ssc.tianw.xyz" > /tmp/ssc/CNAME
+cp "/Users/tianyong/Documents/works/workspace/hp/gaorun/SocialSecurityCard/CNAME" "/Users/tianyong/Documents/works/workspace/hp/gaorun/SocialSecurityCard/Employment Services Integration App/dist/"
 ```
 
 ### 4. 执行部署
 
 ```bash
-surge /tmp/ssc ssc.tianw.xyz
+cd "/Users/tianyong/Documents/works/workspace/hp/gaorun/SocialSecurityCard/Employment Services Integration App"
+surge dist
 ```
 
 成功输出示例：
