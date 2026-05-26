@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router";
-import { CreditCard, Building2, UserCircle, Menu, X } from "lucide-react";
+import { CreditCard, Building, UserCircle, Menu, X } from "lucide-react";
 import { useState } from "react";
 
 export function Layout() {
@@ -7,7 +7,7 @@ export function Layout() {
 
   const navLinks = [
     { to: "/", label: "社会劳动者", icon: UserCircle },
-    { to: "/employer", label: "用人单位", icon: Building2 },
+    { to: "/employer", label: "用人单位", icon: Building },
     { to: "/archive", label: "个人电子档案", icon: CreditCard },
   ];
 

@@ -1,7 +1,7 @@
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { 
   Search, Briefcase, FileText, ClipboardList, BookOpen, 
-  Award, FileBadge, HelpCircle, UserPlus, MapPin, DollarSign, Clock, Building2 
+  Award, FileBadge, HelpCircle, UserPlus, MapPin, DollarSign, Clock, Building 
 } from "lucide-react";
 
 const quickActions = [
@@ -106,7 +106,7 @@ export function SocialWorkerPage() {
               
               <div className="mt-auto space-y-2 text-sm text-slate-600">
                 <div className="flex items-center gap-2">
-                  <Building2 size={16} className="text-slate-400" />
+                  <Building size={16} className="text-slate-400" />
                   <span className="truncate">{job.company}</span>
                 </div>
                 <div className="flex items-center justify-between">
