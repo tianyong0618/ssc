@@ -1,20 +1,9 @@
 import { useState } from "react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { PaymentChart } from "../components/figma/PaymentChart";
 import { 
   User, Briefcase, FileSignature, GraduationCap, Banknote, Shield, CheckCircle2, Copy 
 } from "lucide-react";
-import { 
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer 
-} from "recharts";
-
-const paymentData = [
-  { name: "1月", amount: 1540 },
-  { name: "2月", amount: 1540 },
-  { name: "3月", amount: 1540 },
-  { name: "4月", amount: 1620 },
-  { name: "5月", amount: 1620 },
-  { name: "6月", amount: 1620 },
-];
 
 export function PersonalArchivePage() {
   const [activeTab, setActiveTab] = useState("overview");
@@ -31,7 +20,6 @@ export function PersonalArchivePage() {
   return (
     <div className="flex-1 bg-slate-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Profile Header */}
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 mb-8">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
             <div className="relative">
@@ -81,7 +69,6 @@ export function PersonalArchivePage() {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar Tabs */}
           <div className="w-full lg:w-64 shrink-0">
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden sticky top-24">
               <div className="p-4 bg-slate-50 border-b border-slate-200">
@@ -106,7 +93,6 @@ export function PersonalArchivePage() {
             </div>
           </div>
 
-          {/* Main Content Area */}
           <div className="flex-1">
             {activeTab === "overview" && (
               <div className="space-y-6">
@@ -136,26 +122,7 @@ export function PersonalArchivePage() {
                     <Shield className="text-blue-600" size={20} />
                     近半年社保缴费趋势
                   </h3>
-                  <div className="h-72 w-full">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <AreaChart data={paymentData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                        <defs>
-                          <linearGradient id="colorAmount" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#2563eb" stopOpacity={0.3}/>
-                            <stop offset="95%" stopColor="#2563eb" stopOpacity={0}/>
-                          </linearGradient>
-                        </defs>
-                        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                        <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} dy={10} />
-                        <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} dx={-10} />
-                        <Tooltip 
-                          contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                          formatter={(value) => [`¥${value}`, '缴费金额']}
-                        />
-                        <Area type="monotone" dataKey="amount" stroke="#2563eb" strokeWidth={3} fillOpacity={1} fill="url(#colorAmount)" />
-                      </AreaChart>
-                    </ResponsiveContainer>
-                  </div>
+                  <PaymentChart />
                 </div>
 
                 <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
