@@ -2,9 +2,15 @@ import { createBrowserRouter } from "react-router";
 import { lazy } from "react";
 import { Layout } from "./components/Layout";
 
-const SocialWorkerPage = lazy(() => import("./pages/SocialWorkerPage"));
-const EmployerPage = lazy(() => import("./pages/EmployerPage"));
-const PersonalArchivePage = lazy(() => import("./pages/PersonalArchivePage"));
+const SocialWorkerPage = lazy(() => 
+  import("./pages/SocialWorkerPage").then(module => ({ default: module.SocialWorkerPage }))
+);
+const EmployerPage = lazy(() => 
+  import("./pages/EmployerPage").then(module => ({ default: module.EmployerPage }))
+);
+const PersonalArchivePage = lazy(() => 
+  import("./pages/PersonalArchivePage").then(module => ({ default: module.PersonalArchivePage }))
+);
 
 export const router = createBrowserRouter([
   {
