@@ -1,17 +1,17 @@
 import { useState } from "react";
 
 const paymentData = [
-  { name: "1月", amount: 1540 },
-  { name: "2月", amount: 1540 },
+  { name: "1月", amount: 1500 },
+  { name: "2月", amount: 1520 },
   { name: "3月", amount: 1540 },
-  { name: "4月", amount: 1620 },
+  { name: "4月", amount: 1600 },
   { name: "5月", amount: 1620 },
-  { name: "6月", amount: 1620 },
+  { name: "6月", amount: 1650 },
 ];
 
 const maxAmount = Math.max(...paymentData.map(d => d.amount));
 const minAmount = Math.min(...paymentData.map(d => d.amount));
-const range = maxAmount - minAmount;
+const range = maxAmount - minAmount || 1;
 
 function createAreaPath(points: { x: number; y: number }[], width: number, height: number) {
   if (points.length === 0) return "";
@@ -37,7 +37,7 @@ export function PaymentChart() {
 
   const points = paymentData.map((d, i) => ({
     x: padding.left + (i / (paymentData.length - 1)) * chartWidth,
-    y: padding.top + chartHeight - ((d.amount - minAmount) / range) * chartHeight * 0.8,
+    y: padding.top + chartHeight - ((d.amount - minAmount) / range) * chartHeight * 0.85,
     data: d,
     index: i,
   }));
